@@ -6,6 +6,14 @@ terraform {
       version = "~> 4.0"
     }
   }
+cloud {
+    
+    organization = "arjun-terraform-workspace"
+
+    workspaces {
+      name = "terraform-azure-project"
+    }
+  }
   #backend "azurerm" {
   #  resource_group_name = "central-india-rg"
   #  storage_account_name = "terraformremotestate"
