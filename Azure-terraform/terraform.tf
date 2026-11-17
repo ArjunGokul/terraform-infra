@@ -19,5 +19,5 @@ cloud {
   #  storage_account_name = "terraformremotestate"
   #  container_name       = "tfstate"  
   #  key                  = "terraform.tfstate"
-  }
+  #}
 }
