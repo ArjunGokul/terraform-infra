@@ -6,10 +6,10 @@ terraform {
       version = "~> 4.0"
     }
   }
-  backend "azurerm" {
-    resource_group_name = "central-india-rg"
-    storage_account_name = "terraformremotestate"
-    container_name       = "tfstate"  
-    key                  = "terraform.tfstate"
+  #backend "azurerm" {
+  #  resource_group_name = "central-india-rg"
+  #  storage_account_name = "terraformremotestate"
+  #  container_name       = "tfstate"  
+  #  key                  = "terraform.tfstate"
   }
 }
