@@ -1,3 +1,6 @@
 output "vm_public_ip" {
-  value = azurerm_public_ip.kk-pip.ip_address
+  value = {
+    for key, pip in azurerm_public_ip.kk-pip :
+    key => pip.ip_address
+  }
 }

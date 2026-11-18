@@ -13,3 +13,9 @@ variable "location" {
   description = "Location for the resources."
   type        = string
 }
+
+variable "linux_names" {
+  type        = set(string)
+  description = "List of Linux VM names to be created."
+  default     = ["linux-vm-1", "linux-vm-2"]
+}

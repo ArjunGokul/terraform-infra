@@ -24,7 +24,8 @@ resource "azurerm_subnet" "public-subnet-2" {
 }
 
 resource "azurerm_public_ip" "kk-pip" {
-  name                = "kk-pip"
+  for_each            = toset(var.linux_names)
+  name                = "kk-pip-${each.value}"
   location            = data.azurerm_resource_group.my-rg.location
   resource_group_name = data.azurerm_resource_group.my-rg.name
 
@@ -35,7 +36,8 @@ resource "azurerm_public_ip" "kk-pip" {
 }
 
 resource "azurerm_network_interface" "kk-nic" {
-  name                = "kk-nic"
+  for_each            = toset(var.linux_names)
+  name                = "kk-nic-${each.value}"
   location            = data.azurerm_resource_group.my-rg.location
   resource_group_name = data.azurerm_resource_group.my-rg.name
 
@@ -43,10 +45,10 @@ resource "azurerm_network_interface" "kk-nic" {
     name                          = "internal"
     subnet_id                     = azurerm_subnet.public-subnet-1.id
     private_ip_address_allocation = "Dynamic"
-    public_ip_address_id          = azurerm_public_ip.kk-pip.id
+    public_ip_address_id          = azurerm_public_ip.kk-pip[each.value].id
 
   }
   tags = merge(local.common_tags, {
-    Name = "My NIC"
+    Name = "My NIC-${each.value}"
   })
 }

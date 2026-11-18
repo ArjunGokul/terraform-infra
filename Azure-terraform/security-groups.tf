@@ -1,5 +1,6 @@
 resource "azurerm_network_interface_security_group_association" "kk-nic-nsg" {
-  network_interface_id      = azurerm_network_interface.kk-nic.id
+  for_each                  = toset(var.linux_names)
+  network_interface_id      = azurerm_network_interface.kk-nic[each.value].id
   network_security_group_id = azurerm_network_security_group.my-ns.id
 }
 

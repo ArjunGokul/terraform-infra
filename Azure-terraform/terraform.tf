@@ -6,8 +6,8 @@ terraform {
       version = "~> 4.0"
     }
   }
-cloud {
-    
+  cloud {
+
     organization = "arjun-terraform-workspace"
 
     workspaces {
